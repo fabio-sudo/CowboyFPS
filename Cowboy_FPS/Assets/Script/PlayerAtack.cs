@@ -13,6 +13,9 @@ public class PlayerAtack : MonoBehaviour
     [Header("Impacto")]
     [SerializeField] private GameObject impacto;
 
+    [Header("Animação")]
+    [SerializeField] private Animator animatorArma;
+
     void Start()
     {
         //Travar cursor do mouse
@@ -57,7 +60,7 @@ public class PlayerAtack : MonoBehaviour
                     Debug.Log("Não estou olhando nada");
 
                 }
-
+                animatorArma.SetTrigger("trArma");
                 municaoAtual -= 1;
             }
             else
