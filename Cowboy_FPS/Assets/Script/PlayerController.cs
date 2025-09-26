@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [Header("Posição do Jogador")]
+    public static PlayerController instance;
+
+
     [Header("Player")]
     [SerializeField]
     private float speed = 5f;
@@ -17,15 +22,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float sensibilidade = 100f;
     
-    void Start()
+    void Awake()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
         MovimentarJogador();
+        GirarCamera();
     }
 
     private void MovimentarJogador()
