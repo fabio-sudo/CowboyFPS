@@ -10,6 +10,9 @@ public class PlayerAtack : MonoBehaviour
     [SerializeField] private int municaoMaxima = 30;
     [SerializeField] private int municaoAtual;
 
+    [Header("Impacto")]
+    [SerializeField] private GameObject impacto;
+
     void Start()
     {
         //Travar cursor do mouse
@@ -40,10 +43,14 @@ public class PlayerAtack : MonoBehaviour
                 Debug.DrawRay(
                     raio.origin, raio.direction * 100f, Color.red, 2f);
 
+
                 if (Physics.Raycast(raio, out localAtingido))
                 {
-                    Debug.Log("Estou olhando para:" +
-                        localAtingido.transform.name);
+                    //Debug.Log("Estou olhando para:" +
+                    //    localAtingido.transform.name);
+
+                    Instantiate(impacto,localAtingido.point, localAtingido.transform.rotation);
+
                 }
                 else
                 {
