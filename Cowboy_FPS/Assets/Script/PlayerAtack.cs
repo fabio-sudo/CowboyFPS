@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAtack : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerAtack : MonoBehaviour
     [Header ("Munição")]
     [SerializeField] private int municaoMaxima = 30;
     [SerializeField] private int municaoAtual;
+    [SerializeField] TextMeshProUGUI municaoText;
 
     [Header("Impacto")]
     [SerializeField] private GameObject impacto;
@@ -23,6 +25,9 @@ public class PlayerAtack : MonoBehaviour
 
         //mouse invisivel
         Cursor.visible = false;
+
+        //Munição
+        municaoText.text = $"Munição \n {municaoAtual}";
     }
 
     // Update is called once per frame
@@ -62,6 +67,7 @@ public class PlayerAtack : MonoBehaviour
                 }
                 animatorArma.SetTrigger("trArma");
                 municaoAtual -= 1;
+                municaoText.text = $"Munição \n {municaoAtual}";
             }
             else
             {
