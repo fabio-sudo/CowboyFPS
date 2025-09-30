@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float sensibilidade = 100f;
     
+    [Header ("Animação Player")]
+    [SerializeField] private Animator animatorPainelArma;
+    
+
     void Awake()
     {
         instance = this;
@@ -43,6 +47,19 @@ public class PlayerController : MonoBehaviour
         Vector3 movimentoVertical = transform.right * comandosTeclado.y;
 
         rb.linearVelocity = (movimentoHorizontal + movimentoVertical) * speed;
+
+
+        if (rb.linearVelocity.magnitude ==0)
+        {
+            animatorPainelArma.Play("JogadorParadoAnimation");
+        }
+        else
+        {
+            animatorPainelArma.Play("JogadorAndandoAnimation");
+        }
+
+
+
     }
 
     private void GirarCamera()
