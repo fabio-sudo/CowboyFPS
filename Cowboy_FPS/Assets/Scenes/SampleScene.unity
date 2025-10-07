@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 107589738}
   m_Layer: 0
   m_Name: Colisor3D
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -507,6 +507,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1168478542}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+--- !u!1 &604319212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 604319213}
+  m_Layer: 0
+  m_Name: Disparo
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &604319213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604319212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14, y: 0.009, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1242792976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,8 +1061,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraJogo: {fileID: 519420031}
+  danoInimigo: 2
   municaoMaxima: 30
-  municaoAtual: 5
+  municaoAtual: 100
   municaoText: {fileID: 315784802}
   impacto: {fileID: 4460566095661968520, guid: ab276b1cf328aaf45b6aa320d6533f46, type: 3}
   animatorArma: {fileID: 685315270}
@@ -1079,9 +1111,10 @@ GameObject:
   - component: {fileID: 1242792977}
   - component: {fileID: 1242792978}
   - component: {fileID: 1242792979}
+  - component: {fileID: 1242792980}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1130,7 +1163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3650878650131202823, guid: 3a416de9c53358a4d93e4ee01ac8df66, type: 3}
+  m_Sprite: {fileID: 3548636838096534768, guid: 55f89c829cee1df4e9053518d9f28ab0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1155,6 +1188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 107589737}
+  - {fileID: 604319213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1242792977
@@ -1217,14 +1251,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64d953afb154641b323531674a9d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   pontosCaminhar:
   - {fileID: 1193418153}
   - {fileID: 330000671}
   - {fileID: 1106278556}
   pontoAtual: 0
+  tempoEntreOsPontos: 2
+  tempoAtual: 0
   inimigoEstaVivo: 1
   inimigoPodeAndar: 1
+  projetilInimigo: {fileID: 7873762669221570854, guid: e37631f4727b1b842b6096e406072992, type: 3}
+  localDoDisparo: {fileID: 604319213}
+  distanciaAtaque: 5
+  tempoEntreAtaque: 2
+  inimigoAtacou: 0
+  vidaMaxima: 10
+  vidaAtual: 0
+  animator: {fileID: 0}
+--- !u!95 &1242792980
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242792974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09f2f5825cf676f4aa258a941cfb0096, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1443628375
 GameObject:
   m_ObjectHideFlags: 0

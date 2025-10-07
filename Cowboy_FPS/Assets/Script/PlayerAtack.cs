@@ -7,6 +7,9 @@ public class PlayerAtack : MonoBehaviour
     [SerializeField]
     private Camera cameraJogo;
 
+    [SerializeField]
+    private int danoInimigo = 2;
+
     [Header ("Munição")]
     [SerializeField] private int municaoMaxima = 30;
     [SerializeField] private int municaoAtual;
@@ -54,10 +57,14 @@ public class PlayerAtack : MonoBehaviour
 
                 if (Physics.Raycast(raio, out localAtingido))
                 {
-                    //Debug.Log("Estou olhando para:" +
-                    //    localAtingido.transform.name);
 
                     Instantiate(impacto,localAtingido.point, localAtingido.transform.rotation);
+
+                    if (localAtingido.transform.gameObject.CompareTag("Enemy"))
+                    {
+                        localAtingido.transform.gameObject.
+                            GetComponentInParent<EnemyController>().PerdeVidaInimigo(danoInimigo);
+                    }
 
                 }
                 else
