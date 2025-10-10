@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField]
     private float speed = 5f;
-    
+    private int vidaAtual;
+    private int vidaMaxima = 10;
+
+
     [SerializeField]
     private Rigidbody2D rb;
 
@@ -24,7 +27,12 @@ public class PlayerController : MonoBehaviour
     
     [Header ("Animação Player")]
     [SerializeField] private Animator animatorPainelArma;
-    
+
+
+    private void Start()
+    {
+        vidaAtual = vidaMaxima;
+    }
 
     void Awake()
     {
@@ -73,5 +81,15 @@ public class PlayerController : MonoBehaviour
             transform.rotation.eulerAngles.y,
             transform.rotation.eulerAngles.z - movimentoMouse.x);
     }
+
+    public void DanoPlayer(int dano)
+    {
+        if (GameManager.instance.jogadorEstaVivo)
+        {
+            vidaAtual
+        }
+    }
+
+
 
 }
