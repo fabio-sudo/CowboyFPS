@@ -7,10 +7,17 @@ public class GameManager : MonoBehaviour
     [Header("Verificações")]
     [SerializeField] private bool jogadorEstaVivo;
 
+
     
     void Awake()
     {
         instance = this;
+    }
+
+    public void GameOver()
+    {
+        jogadorEstaVivo = false;
+        Debug.Log("Game Over");
     }
 
 
