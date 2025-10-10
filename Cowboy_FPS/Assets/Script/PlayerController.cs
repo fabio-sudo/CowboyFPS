@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,8 +12,15 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField]
     private float speed = 5f;
+
+    [Header ("Marcadores Vida")]
     public int vidaAtual;
     public int vidaMaxima = 10;
+    public TextMeshProUGUI vidaTexto;
+    public Image vidaImagem;//Using UI  CTRL+.
+    public Sprite spriteMorte;
+
+
 
 
     [SerializeField]
@@ -32,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         vidaAtual = vidaMaxima;
+        vidaTexto.text = vidaAtual.ToString();
     }
 
     void Awake()
@@ -87,13 +97,26 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.jogadorEstaVivo)
         {
             vidaAtual -= dano;
+            vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMaxima);   
+            vidaTexto.text = vidaAtual.ToString();
+
         }
         if(vidaAtual <= 0)
         {
             GameManager.instance.GameOver();
+            Morrer();
         }
     }
 
-
+    private void Morrer()
+    {
+        if (vidaImagem != null && spriteMorte != null)
+        {
+            vidaImagem.sprite = spriteMorte;
+            Color corAtual = vidaImagem.color;
+            corAtual.a = 1f;
+            vidaImagem.color = corAtual;
+        }
+    }
 
 }
