@@ -86,7 +86,11 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.jogadorEstaVivo)
         {
-            vidaAtual
+            vidaAtual -= dano;
+        }
+        if(vidaAtual <= 0)
+        {
+            GameManager.instance.GameOver();
         }
     }
 
