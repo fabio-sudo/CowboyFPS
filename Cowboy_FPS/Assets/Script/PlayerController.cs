@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player")]
     [SerializeField]
     private float speed = 5f;
-    private int vidaAtual;
-    private int vidaMaxima = 10;
+    public int vidaAtual;
+    public int vidaMaxima = 10;
 
 
     [SerializeField]
